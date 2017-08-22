@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerSkills : MonoBehaviour {
-    
-
-    
-
-	void Start () {
-		
-	}
+    private GlobalDB _GDB;
+    void Start () {
+        _GDB = GameObject.Find("GameManager").GetComponent<GlobalDB>(); //поиск скрипта по всем объектам в игре
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -25,12 +22,13 @@ public class PlayerSkills : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(ray , out hit, 2 , 1<<8)) //луч, удар , дистанция , слой куда бить
         {
-            Debug.Log("Берем предмет");
-            Transform objectHit = hit.transform;
-            Debug.Log(objectHit.name);
+            //Transform objectHit = hit.transform;
+             Destroy(hit.transform.gameObject);
             // забрать предмет в инвентарь с помощью луча
-            
+
         }
         
     }
+
+    
 }
