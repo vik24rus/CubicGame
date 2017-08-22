@@ -7,11 +7,13 @@ public class Sphere : MonoBehaviour {
 
     private GlobalDB _GDB;
 
-    public float AttackDelay;
+    private Fight fight;
+    
     private float _attackDelay;
     
     void Start () {
         _GDB = GameObject.Find("GameManager").GetComponent<GlobalDB>(); //поиск скрипта по всем объектам в игре
+        fight = GameObject.Find("GameManager").GetComponent<Fight>(); //поиск скрипта по всем объектам в игре
     }
 	
 	// Update is called once per frame
@@ -22,7 +24,7 @@ public class Sphere : MonoBehaviour {
 
    void OnTriggerStay(Collider other) 
    {
-        if (_attackDelay < AttackDelay)//если _задержка меньше Задержки которую указали вы то - ждем пока не накапают секунды до того числа которое мы указали и если накапали то идем дальше
+        if (_attackDelay < _GDB.AttackDelay)//если _задержка меньше Задержки которую указали вы то - ждем пока не накапают секунды до того числа которое мы указали и если накапали то идем дальше
         {
             _attackDelay += Time.deltaTime;//прибавляем 1 сек
             
@@ -33,7 +35,8 @@ public class Sphere : MonoBehaviour {
             if (other.name.ToString() == _GDB.PlayerName)
             {
 
-                _GDB.playerHP = _GDB.playerHP - _GDB.attakSphere;
+                //_GDB.playerHP = _GDB.playerHP - _GDB.attakSphere;
+                fight.SphereAttak(); 
                 _attackDelay = 0f;//обнуляем _зажержку
 
             }

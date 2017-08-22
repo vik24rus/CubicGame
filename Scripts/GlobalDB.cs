@@ -7,28 +7,25 @@ public class GlobalDB : MonoBehaviour {
     public int sphereHP = 100;
     public int attakSphere = 15;
     public int attakPlayer = 5;
-    public string PlayerName = "RigidBodyFPSController";
+    public string PlayerName;
+    public float AttackDelay = 2;
 
-    bool PlayerDIE = false;
+    public bool PlayerDIE = false;
 
-    
+    [SerializeField]
+    public GameObject Gamer;
+
     // Use this for initialization
     void Start () {
-		
+        PlayerName = Gamer.name;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (playerHP <= 0)
-        {
-            //Debug.Log("УБИТ");
-        }
+        
     }
 
            
     
-    public void SphereGetDamage()
-    {
-
-    }
+    
 }
