@@ -23,19 +23,23 @@ public class Cube : MonoBehaviour {
     }
     void OnTriggerEnter(Collider other)  //проверка что подошел именно игрок тригером - можно на колизиях сделать
     {
-        //Debug.Log(other.name.ToString());
+        
         if(other.name.ToString() == _GDB.PlayerName)
         {
             Destroy(CubeText);
             UI_NPC_Dialog.SetActive(true);
         }
-        
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            //кубик скажет вперед!
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+           //кубик скажет ты лох!
+        }
     }
 
-    //void OnTriggerStay(Collider other)
-    //{
-    //    UI_NPC_Dialog.SetActive(true);        
-    //}
+
     void OnTriggerExit(Collider other)
     {
         if (other.name.ToString() == _GDB.PlayerName)

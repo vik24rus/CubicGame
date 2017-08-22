@@ -11,12 +11,12 @@ public class Fight : MonoBehaviour {
 
 	public void SphereAttak()
     {
-        _GDB.playerHP = _GDB.playerHP - _GDB.attakSphere; 
+        _GDB.playerHP = _GDB.playerHP - (_GDB.attakSphere - _GDB.PlayerDefend); 
     }
 
     public void PlayerAttak()
     {
-
+        Debug.Log("УДАР");
     }
 	// Update is called once per frame
 	void Update () {

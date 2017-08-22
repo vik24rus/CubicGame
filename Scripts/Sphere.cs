@@ -24,7 +24,7 @@ public class Sphere : MonoBehaviour {
 
    void OnTriggerStay(Collider other) 
    {
-        if (_attackDelay < _GDB.AttackDelay)//если _задержка меньше Задержки которую указали вы то - ждем пока не накапают секунды до того числа которое мы указали и если накапали то идем дальше
+        if (_attackDelay < _GDB.AttackDelaySphere)//если _задержка меньше Задержки которую указали вы то - ждем пока не накапают секунды до того числа которое мы указали и если накапали то идем дальше
         {
             _attackDelay += Time.deltaTime;//прибавляем 1 сек
             
