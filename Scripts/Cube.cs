@@ -10,6 +10,7 @@ public class Cube : MonoBehaviour {
     [SerializeField]
     GameObject UI_NPC_Dialog;
 
+    
     private GlobalDB _GDB;
     // Use this for initialization
     void Start () {
@@ -29,23 +30,30 @@ public class Cube : MonoBehaviour {
             Destroy(CubeText);
             UI_NPC_Dialog.SetActive(true);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            //кубик скажет вперед!
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-           //кубик скажет ты лох!
-        }
+        
     }
 
+    void OnTriggerStay(Collider other)
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            _GDB.CubicSay = "Вперёд!";
+            _GDB.CubicSayBool = true;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            _GDB.CubicSay = "Ты лох!";
+            _GDB.CubicSayBool = true;
+        }
+    }
 
     void OnTriggerExit(Collider other)
     {
         if (other.name.ToString() == _GDB.PlayerName)
         {
             Destroy(CubeText);
-        UI_NPC_Dialog.SetActive(false);
+            UI_NPC_Dialog.SetActive(false);
+            
         }
     }
 }

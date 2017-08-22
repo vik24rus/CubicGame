@@ -21,21 +21,46 @@ public class GlobalDB : MonoBehaviour {
     public List<string> Inventar = new List<string>();
     public bool inventarChange = false;
     public bool swordOn= false;
-    public bool armorOn = false;
+    public bool armorOn = false; // типа подняли и у нас в инвентаре
     public int ArmorDefend = 10;
-    public int SwordDamage = 2;
+    public int SwordDamage = 49;
+
+    public string CubicSay = "";
+    public bool CubicSayBool= false;
+
+    public bool armorOnPlayer = false; //типа надето на нас
+    
+    public bool swordOnPlayer = false;
     // Use this for initialization
     void Start () {
         PlayerName = Gamer.name;
-	}
+        
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
+        EquipmentBonus();
+    }
+
+
+    void EquipmentBonus()
+    {
+
+        if (armorOn == true && armorOnPlayer == true)
+        {
+            PlayerDefend = PlayerDefend + ArmorDefend;
+            armorOnPlayer = false;
+        }
+
+        if (swordOn == true && swordOnPlayer == true)
+        {
+            PlayerAttak = PlayerAttak + SwordDamage;
+            swordOnPlayer = false;
+        }
         
     }
-    //1. бой - удар игрока с учетом снаряги и зашита
-    //2. диалог
-           
-    
-    
+
+
+
 }

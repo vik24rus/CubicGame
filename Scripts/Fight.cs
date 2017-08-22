@@ -16,7 +16,8 @@ public class Fight : MonoBehaviour {
 
     public void PlayerAttak()
     {
-        Debug.Log("УДАР");
+        _GDB.sphereHP = _GDB.sphereHP - _GDB.PlayerAttak ;
+        
     }
 	// Update is called once per frame
 	void Update () {

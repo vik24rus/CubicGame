@@ -34,19 +34,22 @@ public class PlayerSkills : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(ray , out hit, 2 , 1<<8)) //луч, удар , дистанция , слой куда бить
         {
-            Destroy(hit.collider.gameObject);
+            
             if (hit.collider.name == "Sword")
             {
                 _GDB.swordOn = true;
-                _GDB.Inventar.Add(hit.collider.name.ToString());
+                _GDB.Inventar.Add("Меч");
                 _GDB.inventarChange = true;
+                _GDB.swordOnPlayer = true;
             }
             if (hit.collider.name == "Armor")
             {
-                _GDB.swordOn = true;
-                _GDB.Inventar.Add(hit.collider.name.ToString());
+                _GDB.armorOn = true;
+                _GDB.Inventar.Add("Бронька");
                 _GDB.inventarChange = true;
+                _GDB.armorOnPlayer = true;
             }
+            Destroy(hit.collider.gameObject);
 
         }
 

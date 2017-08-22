@@ -10,7 +10,7 @@ public class Sphere : MonoBehaviour {
     private Fight fight;
     
     private float _attackDelay;
-    
+    public GameObject UIHealth;
     void Start () {
         _GDB = GameObject.Find("GameManager").GetComponent<GlobalDB>(); //поиск скрипта по всем объектам в игре
         fight = GameObject.Find("GameManager").GetComponent<Fight>(); //поиск скрипта по всем объектам в игре
@@ -34,7 +34,7 @@ public class Sphere : MonoBehaviour {
 
             if (other.name.ToString() == _GDB.PlayerName)
             {
-
+                UIHealth.SetActive(true);
                 //_GDB.playerHP = _GDB.playerHP - _GDB.attakSphere;
                 fight.SphereAttak(); 
                 _attackDelay = 0f;//обнуляем _зажержку
@@ -42,7 +42,9 @@ public class Sphere : MonoBehaviour {
             }
 
         }
+
         
+
     }
 
     void OnTriggerExit()
